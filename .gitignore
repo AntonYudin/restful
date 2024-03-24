@@ -1,2 +1,7 @@
 target
+dependency-reduced-pom.xml
+key.store
+key.store.p12
+server.crt
+server.key
 *.exe
