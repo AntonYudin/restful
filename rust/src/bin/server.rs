@@ -1,19 +1,12 @@
 
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
-use serde::{Deserialize, Serialize};
+//use serde::{Deserialize, Serialize};
 use serde_xml_rs::to_string;
 use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 
+use restful::restful::Input;
+use restful::restful::Output;
 
-#[derive(Deserialize)]
-struct Input {
-    input: Option<String>
-}
-
-#[derive(Serialize)]
-struct Output {
-    content: String
-}
 
 async fn process_json(query: web::Query<Input>) -> impl Responder {
     HttpResponse::Ok().json(
