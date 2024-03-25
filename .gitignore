@@ -5,3 +5,6 @@ key.store.p12
 server.crt
 server.key
 *.exe
+go/client
+go/server
+rust/Cargo.lock
