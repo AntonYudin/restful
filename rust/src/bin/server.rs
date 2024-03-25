@@ -15,7 +15,7 @@ struct Output {
     content: String
 }
 
-async fn json_handler(query: web::Query<Input>) -> impl Responder {
+async fn process_json(query: web::Query<Input>) -> impl Responder {
     HttpResponse::Ok().json(
         Output {
             content: "[".to_owned() +
@@ -27,7 +27,7 @@ async fn json_handler(query: web::Query<Input>) -> impl Responder {
     )
 }
 
-async fn xml_handler(query: web::Query<Input>) -> impl Responder {
+async fn process_xml(query: web::Query<Input>) -> impl Responder {
     HttpResponse::Ok().content_type("application/xml").body(
         to_string(
             &Output {
@@ -59,8 +59,8 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(|| {
         App::new()
-            .route("/json", web::get().to(json_handler))
-            .route("/xml", web::get().to(xml_handler))
+            .route("/api/processJSON", web::get().to(process_json))
+            .route("/api/processXML", web::get().to(process_xml))
     }).bind_openssl("127.0.0.1:8080", builder)?
         .run()
         .await
