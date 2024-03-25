@@ -8,3 +8,5 @@ server.key
 go/client
 go/server
 rust/Cargo.lock
+rust/server.cert.pem
+rust/server.key.pem
