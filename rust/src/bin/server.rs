@@ -1,6 +1,5 @@
 
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
-//use serde::{Deserialize, Serialize};
 use serde_xml_rs::to_string;
 use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 
